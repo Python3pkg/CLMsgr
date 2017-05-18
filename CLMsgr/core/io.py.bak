@@ -28,15 +28,15 @@ def ask(prompt, multiline=False):
     Returns None if editing was cancelled by keyboard interrupt
         or no input gotten from user.
     '''
-    print(('{0}: '.format(prompt)))
+    print('{0}: '.format(prompt))
     if multiline:
         contents = []
         while True:
             try:
                 if sys.version_info.major < 3:
-                    content = input('> ')
+                    content = raw_input('> ')
                 else:
-                    content = eval(input('> '))
+                    content = input('> ')
             except KeyboardInterrupt:
                return None
             except EOFError:
@@ -50,9 +50,9 @@ def ask(prompt, multiline=False):
     else:
         try:
             if sys.version_info.major < 3:
-                return input('> ')
+                return raw_input('> ')
             else:
-                return eval(input('> '))
+                return input('> ')
         except KeyboardInterrupt:
             return None
         except EOFError:
@@ -104,10 +104,10 @@ def listing(channel, heading, content, status=2):
     if channel == '' or heading is None:
         channel = '!'
     'Handles listing of iterables'
-    print(('{color}\n{sep}\n{heading} - {channel}\n{sep}\n{content}\n'.format(
+    print('{color}\n{sep}\n{heading} - {channel}\n{sep}\n{content}\n'.format(
                     color=get_color(status),
                     heading=heading,
                     channel=channel,
                     sep="=" * len(heading),
                     content='-> {0}'.format('\n> '.join(content)) if content else ' None'
-    )))
+    ))

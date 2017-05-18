@@ -23,19 +23,19 @@ class channel:
 
     def read(self, prompt):
         'Handles getting input from User'
-        return input('? {prompt} ({channel}): '.format(
+        return raw_input('? {prompt} ({channel}): '.format(
             prompt=prompt,
             channel=self.__name))
 
     def msg(self, sender, content):
         'Handles showing message to User'
         messages.save(self.__name, sender, content)
-        print(('\n{color}>>> {sender}{reset} ({channel}): {content}\n'.format(
+        print('\n{color}>>> {sender}{reset} ({channel}): {content}\n'.format(
             color=colorama.Fore.WHITE,
             reset=colorama.Style.RESET_ALL,
             sender=sender,
             channel=self.__name,
-            content=content)))
+            content=content))
 
     def getpass(self, prompt):
         'Handles getting password from User'
